@@ -1,0 +1,5 @@
+<!--pages/menu/menu.wxml-->
+
+<open-data type="userNickName"></open-data>
+
+<button bindtap='gotoIndex'>登录</button>
