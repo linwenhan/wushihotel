@@ -1,43 +1,28 @@
-<!--index.wxml-->
-<view class="container">
-
-  <!-- 用户 openid -->
-  <view class="userinfo">
-    <button 
-      open-type="getUserInfo" 
-      bindgetuserinfo="onGetUserInfo"
-      class="userinfo-avatar"
-      style="background-image: url({{avatarUrl}})"
-    ></button>
-    <view>
-      <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
-    </view>
-  </view>
-
-
-  <!-- 上传图片 -->
-  <view class="uploader">
-    <view class="uploader-text" bindtap="doUpload">
-      <text>上传图片</text>
-    </view>
-    <view class="uploader-container" wx:if="{{imgUrl}}">
-      <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
-    </view>
-  </view>
-
-
-  <!-- 操作数据库 -->
-  <view class="uploader">
-    <navigator url="../databaseGuide/databaseGuide" open-type="navigate" class="uploader-text">
-      <text>前端操作数据库</text>
-    </navigator>
-  </view>
-
-  <!-- 新建云函数 -->
-  <view class="uploader">
-    <navigator url="../addFunction/addFunction" open-type="navigate" class="uploader-text">
-      <text>快速新建云函数</text>
-    </navigator>
-  </view>
-
+<!--pages/index/index.wxml-->
+<view>
+    <swiper indicator-dots="true" autoplay="true" interval='5000' style="height:750rpx">
+      <block wx:for-items="{{imagelist}}" wx:key="{{item.id}}">
+      <swiper-item>
+        <image src="{{item.imageSrc}}" style="width:750rpx;height:750rpx;border-radius:15px;"></image>
+      </swiper-item>
+      </block>
+    </swiper>
+    <block wx:for-items="{{messagelist}}" wx:key="{{item.id}}">
+        <view class="kind-list-item">
+          <view id="{{item.id}}" class="kind-list-item-hd {{item.open ? 'kind-list-item-hd-show' : ''}}" bindtap="kindToggle">
+            <view class="kind-list-text">{{item.name}}</view>
+            <image class="kind-list-img" src="../image/kind/{{item.id}}.png"></image>
+          </view>
+          <view class="kind-list-item-bd {{item.open ? 'kind-list-item-bd-show' : ''}}">
+            <view class="navigator-box {{item.open ? 'navigator-box-show' : ''}}">
+              <block wx:for-items="{{item.pages}}" wx:for-item="page" wx:key="*item">
+                <view  class="navigator" bindtap="{{page.id}}">
+                  <view class="navigator-text">{{page.name}}</view>
+                  <view class="navigator-arrow"></view>
+                </view>
+              </block>
+            </view>
+          </view>
+        </view>
+      </block>
 </view>

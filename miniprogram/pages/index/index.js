@@ -1,119 +1,145 @@
-//index.js
-const app = getApp()
-
+// pages/index/index.js
+const app = getApp();
 Page({
+  
+  /**
+   * 页面的初始数据
+   */
   data: {
-    avatarUrl: './user-unlogin.png',
-    userInfo: {},
-    logged: false,
-    takeSession: false,
-    requestResult: ''
+      imageUrl:app.imageUrl,
+      imagelist: [
+        {
+          id: '0',
+          imageSrc: app.imageUrl+'main_0.jpg'
+        }, 
+        {
+          id: '1',
+          imageSrc: app.imageUrl +'main_1.jpg'
+        }, 
+        {
+          id: '2',
+          imageSrc: app.imageUrl +'main_2.jpg'
+        }, 
+        {
+          id: '3',
+          imageSrc: app.imageUrl +'main_3.jpg'
+        }, 
+        {
+          id: '4',
+          imageSrc: app.imageUrl +'main_4.jpg'
+        }, 
+        {
+          id: '5',
+          imageSrc: app.imageUrl +'main_5.jpg'
+        }
+      ],
+    messagelist:[
+      {
+        id: 'map',
+        name: '地址：漳浦县旧镇镇苑上村乌石宾馆',
+        open:false,
+        pages: [{id:'openMap',name:'打开地图'}]
+      }, 
+      {
+        id: 'time',
+        name: '营业时间：全天营业',
+        open: null,
+        pages: []
+      }, 
+      {
+        id: 'phone',
+        name: '联系电话：15892028032（林女士）',
+        open: false,
+        pages: [{ id: 'callPhone', name: '拨打电话' }]
+      }, 
+    ]
   },
-
-  onLoad: function() {
-    if (!wx.cloud) {
-      wx.redirectTo({
-        url: '../chooseLib/chooseLib',
-      })
-      return
-    }
-
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              this.setData({
-                avatarUrl: res.userInfo.avatarUrl,
-                userInfo: res.userInfo
-              })
-            }
-          })
+  kindToggle(e) {
+    const id = e.currentTarget.id
+    const list = this.data.messagelist
+    for (let i = 0, len = list.length; i < len; ++i) {
+      if (list[i].id === id) {
+        if (list[i].open!=null){
+          list[i].open = !list[i].open
+        }
+      } else {
+        if (list[i].open != null) {
+          list[i].open = false
         }
       }
-    })
-  },
-
-  onGetUserInfo: function(e) {
-    if (!this.logged && e.detail.userInfo) {
-      this.setData({
-        logged: true,
-        avatarUrl: e.detail.userInfo.avatarUrl,
-        userInfo: e.detail.userInfo
-      })
     }
+    this.setData({
+      messagelist :list
+    })
+    wx.reportAnalytics('click_view_programmatically', {})
   },
 
-  onGetOpenid: function() {
-    // 调用云函数
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        app.globalData.openid = res.result.openid
-        wx.navigateTo({
-          url: '../userConsole/userConsole',
-        })
-      },
-      fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
-        wx.navigateTo({
-          url: '../deployFunctions/deployFunctions',
-        })
-      }
+  openMap: function () {
+    wx.openLocation({
+      latitude: 24.070868,
+      longitude: 117.729203,
+      scale: 28
     })
   },
 
-  // 上传图片
-  doUpload: function () {
-    // 选择图片
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['compressed'],
-      sourceType: ['album', 'camera'],
-      success: function (res) {
-
-        wx.showLoading({
-          title: '上传中',
-        })
-
-        const filePath = res.tempFilePaths[0]
-        // 上传图片
-        const cloudPath = 'image/my-image-' + filePath.match(/\.[^.]+?$/)[0]
-        wx.cloud.uploadFile({
-          cloudPath,
-          filePath,
-          success: res => {
-            console.log('[上传文件] 成功：', res)
-
-            app.globalData.fileID = res.fileID
-            app.globalData.cloudPath = cloudPath
-            app.globalData.imagePath = filePath
-            
-            wx.navigateTo({
-              url: '../storageConsole/storageConsole'
-            })
-          },
-          fail: e => {
-            console.error('[上传文件] 失败：', e)
-            wx.showToast({
-              icon: 'none',
-              title: '上传失败',
-            })
-          },
-          complete: () => {
-            wx.hideLoading()
-          }
-        })
-
-      },
-      fail: e => {
-        console.error(e)
-      }
+  callPhone: function () {
+    wx.makePhoneCall({
+      phoneNumber: '15892028032',
     })
   },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
 
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    wx.reportAnalytics('enter_home_programmatically', {})
+  },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+  onHide: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+
+  },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+
+  },
+
+  /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage: function () {
+
+  }
 })

@@ -1,0 +1,34 @@
+<view>
+  <view class="item kind-list-item-hd">
+    <text style="color:red;font-size: 50rpx">{{message}}</text>
+  </view>
+  <block wx:for-items="{{list}}"  wx:key="{{item._id}}">
+    <view class="item kind-list-item-hd" data-name="{{item.name}}" bindtap='findDetail'>
+      <view class="item_view">
+        <view class="item_left" style="width:150rpx;height:250rpx">
+        <image class="item_image" src="{{item.image}}" style="width:150rpx;height:150rpx"></image>
+        </view>
+        <view class="item_right">
+          <view>
+          <text class="item_right_text1">房型：{{item.name}}</text>
+          </view>
+          <view>
+          <text class="item_right_text2">房间大小：{{item.roomSize}}</text>
+          </view>
+          <view>
+          <text class="item_right_text3">可住人数：{{item.peopleSize}}人</text>
+          </view>
+          <view>
+          <text class="item_right_text4">设施：{{item.facility}}</text>
+          </view>
+          <view>
+            <text style="color:red;font-size: 20rpx">￥<text style="font-size: 40rpx">{{item.price}}</text>
+            </text>
+          </view>
+          
+        </view>
+      </view>
+       
+    </view>
+  </block>
+</view>

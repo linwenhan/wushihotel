@@ -1,21 +1,40 @@
 {
-  "pages": [
-    "pages/menu/menu",
-    "pages/index/index",
-    "pages/indexMin/indexMin",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/databaseGuide/databaseGuide",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib"
-  ],
-  "window": {
-    "backgroundColor": "#F6F6F6",
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "云开发体验_lwh",
-    "navigationBarTextStyle": "black"
-  },
-  "cloud": true
+    "pages": [
+      "pages/index/index",
+      "pages/houses/houses",
+      "pages/house/house"
+    ],
+    "permission": {
+      "scope.userLocation": {
+        "desc": "你的位置信息将用于小程序位置接口的效果展示"
+      }
+    },
+    "window": {
+      "navigationBarBackgroundColor": "#ffffff",
+      "navigationBarTextStyle": "black",
+      "navigationBarTitleText": "漳浦县旧镇镇乌石宾馆",
+      "backgroundColor": "#eeeeee",
+      "backgroundTextStyle": "light",
+      "enablePullDownRefresh": false
+    },
+    "tabBar": {
+      "color": "#7A7E83",
+      "selectedColor": "#3cc51f",
+      "borderStyle": "black",
+      "backgroundColor": "#ffffff",
+      "list": [
+        {
+          "pagePath": "pages/index/index",
+          "iconPath": "pages/image/kind/home_2.png",
+          "selectedIconPath": "pages/image/kind/home_1.png",
+          "text": "首页"
+        },
+        {
+          "pagePath": "pages/houses/houses",
+          "iconPath": "pages/image/kind/menu_2.jpg",
+          "selectedIconPath": "pages/image/kind/menu_1.jpg",
+          "text": "房间预览"
+        }
+      ]
+    }
 }

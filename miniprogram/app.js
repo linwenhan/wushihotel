@@ -1,5 +1,6 @@
 //app.js
 App({
+  imageUrl: "cloud://wushihotel-0a4e02.7775-wushihotel-0a4e02/",
   onLaunch: function () {
     
     if (!wx.cloud) {

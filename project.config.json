@@ -1,6 +1,6 @@
 {
 	"miniprogramRoot": "miniprogram/",
-	"cloudfunctionRoot": "wushihotel/",
+	"cloudfunctionRoot": "cloudfunctions/",
 	"setting": {
 		"urlCheck": true,
 		"es6": true,
@@ -8,8 +8,8 @@
 		"minified": true,
 		"newFeature": true
 	},
-	"appid": "wx2287b05eba342a9f",
-	"projectname": "ccc",
+	"appid": "wx9d6e5cde72335c8e",
+	"projectname": "wushibinguan",
 	"libVersion": "2.2.5",
 	"condition": {
 		"search": {

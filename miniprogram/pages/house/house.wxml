@@ -1,0 +1,40 @@
+<!--pages/house/house.wxml-->
+<swiper indicator-dots="true" autoplay="true" interval='5000' style="height:750rpx">
+  <block wx:for-items="{{house.images}}" wx:key="">
+    <swiper-item>
+      <image src="{{item}}" style="width:750rpx;height:750rpx;border-radius:15px;"></image>
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class="house_menu">
+<text class="item_right_text1">房型：{{house.name}}</text>
+</view>
+<view class="border_bottom"></view>
+<view class="house_menu">
+面积：<text class="item_right_text2">{{house.roomSize}}m²</text>
+</view>
+<view class="house_menu">
+窗户：<text class="item_right_text2">{{house.window}}</text>
+</view>
+<view class="house_menu">
+床型：<text class="item_right_text2">{{house.bedtype}}</text>
+</view>
+<view class="house_menu">
+卫浴：<text class="item_right_text2">{{house.bathroom}}</text>
+</view>
+<view class="house_menu">
+可住：<text class="item_right_text3">{{house.peopleSize}}人</text>
+</view>
+<view class="house_menu">
+楼层：<text class="item_right_text3">{{house.floor}}</text>
+</view>
+<view class="house_menu">
+早餐：<text class="item_right_text3">{{house.breakfast}}</text>
+</view>
+<view class="house_menu">
+上网：<text class="item_right_text4">{{house.internet}}</text>
+</view>
+<view class="house_price">
+价格：<text style="color:red;">￥{{house.price}}</text>
+</view>

@@ -1,0 +1,49 @@
+/* pages/houses/houses.wxss */
+@import "../common/common.wxss";
+
+.item{
+  padding: 30rpx;
+  align-items: center;
+  /* border: 1px solid black; */
+  background-color:#FFFFFF;
+  border-radius:25px;
+  margin: 20rpx;
+}
+.item_image{
+  align-items: left;
+  width:260rpx;
+  height:400rpx;
+  border-radius:5px;
+}
+.item_view{
+  display:flex;
+}
+.item_left{
+  width:260rpx;
+}
+.item_right{
+  padding: 0rpx 0rpx 0rpx 10rpx;
+}
+.item_right_text1{
+  font-size: 40rpx;
+  font-weight: bold; 
+}
+.item_right_text2{
+  font-size: 30rpx
+}
+.item_right_text3{
+  font-size: 30rpx
+}
+.item_right_text4{
+  font-size: 30rpx;
+  max-width:20rpx;
+  overflow: hidden;
+
+text-overflow: ellipsis;
+
+white-space: nowrap; 
+}
+.item_price{
+  margin-top:150rpx;
+  margin-left:100rpx;
+}

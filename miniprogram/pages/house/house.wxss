@@ -1,0 +1,24 @@
+/* pages/house/house.wxss */
+@import "../houses/houses.wxss";
+.border_bottom{
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.house_name{
+  margin-left: 20rpx;
+}
+.house_menu{
+  margin-left: 20rpx;
+}
+.house_window{
+  margin-left: 20rpx;
+}
+.house_peopleSize{
+  margin-left: 20rpx;
+}
+.house_facility{
+  margin-left: 20rpx;
+}
+.house_price{
+  margin-left: 20rpx;
+}
