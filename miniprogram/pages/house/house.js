@@ -41,8 +41,7 @@ Page({
     const db = wx.cloud.database();
     // 查询当前用户所有的 counters
     db.collection('house').where({
-      // name: options.name
-      name:"大床房"
+      name: options.name
     }).get({
       success: res => {
         const app = getApp();
